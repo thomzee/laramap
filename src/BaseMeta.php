@@ -21,9 +21,9 @@ class BaseMeta
     public static function success()
     {
         return [
-            "code" => JsonResponse::HTTP_OK,
-            "status" => "success",
-            "message" => "Operation successfully executed."
+            'code' => JsonResponse::HTTP_OK,
+            'status' => 'success',
+            'message' => 'Operation successfully executed.'
         ];
     }
 
@@ -35,9 +35,9 @@ class BaseMeta
     public static function error()
     {
         return [
-            "code" => JsonResponse::HTTP_INTERNAL_SERVER_ERROR,
-            "status" => "error",
-            "message" => "Oops, something went wrong."
+            'code' => JsonResponse::HTTP_INTERNAL_SERVER_ERROR,
+            'status' => 'error',
+            'message' => 'Oops, something went wrong.'
         ];
     }
 
@@ -53,10 +53,10 @@ class BaseMeta
             $messageBag = $messageBag->all();
         }
         return [
-            "code" => JsonResponse::HTTP_UNPROCESSABLE_ENTITY,
-            "status" => "validation_error",
-            "message" => "Oops, something went wrong.",
-            "errors" => $messageBag
+            'code' => JsonResponse::HTTP_UNPROCESSABLE_ENTITY,
+            'status' => 'validation_error',
+            'message' => 'Oops, something went wrong.',
+            'errors' => $messageBag
         ];
     }
 }

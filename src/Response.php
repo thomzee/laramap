@@ -25,7 +25,7 @@ class Response
     public static function success()
     {
         $response = [
-            "meta" => BaseMeta::success()
+            'meta' => BaseMeta::success()
         ];
 
         return response()->json($response, JsonResponse::HTTP_OK);
@@ -46,8 +46,8 @@ class Response
         }
 
         $response = [
-            "meta" => BaseMeta::success(),
-            "data" => $mapper->single($item)
+            'meta' => BaseMeta::success(),
+            'data' => $mapper->single($item)
         ];
 
         return response()->json($response, JsonResponse::HTTP_OK);
@@ -68,8 +68,8 @@ class Response
         }
 
         $response = [
-            "meta" => BaseMeta::success(),
-            "data" => $mapper->list($items)
+            'meta' => BaseMeta::success(),
+            'data' => $mapper->list($items)
         ];
 
         return response()->json($response, JsonResponse::HTTP_OK);
@@ -90,8 +90,8 @@ class Response
         }
 
         $response = [
-            "meta" => BaseMeta::success(),
-            "pages" => [
+            'meta' => BaseMeta::success(),
+            'pages' => [
                 'per_page' => $paged->perPage(),
                 'current_page' => $paged->currentPage(),
                 'last_page' => $paged->lastPage(),
@@ -99,12 +99,12 @@ class Response
                 'from' => $paged->firstItem(),
                 'to' => $paged->lastItem()
             ],
-            "links" => [
+            'links' => [
                 'self' => $paged->perPage(),
                 'next' => $paged->nextPageUrl(),
                 'prev' => $paged->previousPageUrl(),
             ],
-            "data" => $mapper->list($paged->items())
+            'data' => $mapper->list($paged->items())
         ];
 
         return response()->json($response, JsonResponse::HTTP_OK);
@@ -113,7 +113,7 @@ class Response
     public static function validation(Validator $validator, $merged = false)
     {
         $response = [
-            "meta" => BaseMeta::validation($validator, $merged)
+            'meta' => BaseMeta::validation($validator, $merged)
         ];
 
         return response()->json($response, JsonResponse::HTTP_OK);
