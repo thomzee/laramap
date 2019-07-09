@@ -15,7 +15,7 @@ use Illuminate\Http\JsonResponse;
  * Class Response
  * @package Thomzee\Laramap
  */
-class Response
+class MapperService
 {
     /**
      * Only returns success information.

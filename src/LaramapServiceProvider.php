@@ -49,8 +49,8 @@ class LaramapServiceProvider extends ServiceProvider
     protected function registerService()
     {
         $this->app->singleton('laramap', function () {
-            return new Response();
+            return new MapperService();
         });
-        $this->app->alias('laramap', Response::class);
+        $this->app->alias('laramap', MapperService::class);
     }
 }
