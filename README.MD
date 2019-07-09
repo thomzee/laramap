@@ -21,7 +21,7 @@ a. go into your project root folder laravel
 ``` 
 b. and type this
 ```$xslt
-    composer require composer require thomzee/laramap
+    composer require thomzee/laramap
 ```
 c. and add to your ```config/app.php ``` , this line 
 ```$xslt
