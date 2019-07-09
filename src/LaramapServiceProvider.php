@@ -3,7 +3,6 @@
 namespace Thomzee\Laramap;
 
 use Illuminate\Support\ServiceProvider;
-use Thomzee\Laramap\Facades\Laramap;
 
 class LaramapServiceProvider extends ServiceProvider
 {
@@ -19,7 +18,7 @@ class LaramapServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands($this->commands);
-        $this->registerApp();
+        $this->registerService();
     }
 
     /**
@@ -32,6 +31,11 @@ class LaramapServiceProvider extends ServiceProvider
         //
     }
 
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
     public function provides()
     {
         return [
@@ -39,7 +43,10 @@ class LaramapServiceProvider extends ServiceProvider
         ];
     }
 
-    protected function registerApp()
+    /**
+     * Register service class.
+     */
+    protected function registerService()
     {
         $this->app->singleton('laramap', function () {
             return new Response();

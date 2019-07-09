@@ -33,9 +33,10 @@ class Response
 
     /**
      * Returns single object data.
+     * $item will be mapped based on BaseMapper child class.
      *
      * @param string $mapper
-     * @param $item
+     * @param array|object $item
      * @return JsonResponse
      */
     public static function single(string $mapper, $item)
@@ -55,6 +56,7 @@ class Response
 
     /**
      * Returns array of data.
+     * $items will be looped and mapped based on BaseMapper child class.
      *
      * @param string $mapper
      * @param $items
@@ -77,6 +79,7 @@ class Response
 
     /**
      * Returns paginated array of data.
+     * $paged have to be instance of Laravel paginator class.
      *
      * @param string $mapper
      * @param Paginator $paged
@@ -110,6 +113,14 @@ class Response
         return response()->json($response, JsonResponse::HTTP_OK);
     }
 
+    /**
+     * Returns error bag of Laravel validation.
+     * $merged determines the form of error bag.
+     *
+     * @param Validator $validator
+     * @param bool $merged
+     * @return JsonResponse
+     */
     public static function validation(Validator $validator, $merged = false)
     {
         $response = [
