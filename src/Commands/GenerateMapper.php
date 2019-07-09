@@ -32,7 +32,7 @@ class GenerateMapper extends GeneratorCommand
      */
     protected function getStub()
     {
-        return 'packages/thomzee/laramap/src/Commands/Stubs/mapper.stub';
+        return 'vendor/thomzee/laramap/src/Commands/Stubs/mapper.stub';
     }
 
     /**
