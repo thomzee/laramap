@@ -5,16 +5,16 @@ Laravel Mapper For Object Eloquent (Laravel)
 
 ## Installs
 
-### For ABOVE Version Laravel 5.4 
+### For Laravel Version 5.4 and/or NEWER
 a. go into your project root folder laravel 
 ```$xslt
     cd YOUR_LARAVEL_ROOT_PROJECT/
 ``` 
 b. and type this
 ```$xslt
-    composer require composer require thomzee/laramap
+    composer require thomzee/laramap
 ```
-### For UNDER Version Laravel 5.4
+### For Laravel Version 5.3 and/or OLDER
 a. go into your project root folder laravel 
 ```$xslt
     cd YOUR_LARAVEL_ROOT_PROJECT/
