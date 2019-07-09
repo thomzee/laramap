@@ -43,7 +43,7 @@ Run `composer dump-autoload` command to update changes in your project configura
     composer dump-autoload
 ```
 ## Mapper Class Generator
-Make sure ```php artisan make:mapper ``` is exist, and list artisan command with 
+Make sure ```php artisan make:mapper``` is exist, and list artisan command with 
 ```$xslt
     php artisan list
 ```
@@ -69,7 +69,7 @@ Import the package in above of your controller class.
     use Laramap;
 ```
 That's it. That is because you has registered the package in your project configuration file.
-##### 1. Paginated Data
+#### 1. Paginated Data
 Get list of paginated data with pages information.
 First parameter must be Mapper class you generated before and the second must be instance of `Illuminate\Contracts\Pagination\Paginator`.
 You can do where clause and other query builder functions before finally you call the paginate() function here.
