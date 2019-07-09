@@ -32,6 +32,20 @@ class Response
     }
 
     /**
+     * Only returns error information.
+     *
+     * @return JsonResponse
+     */
+    public static function error()
+    {
+        $response = [
+            'meta' => BaseMeta::error()
+        ];
+
+        return response()->json($response, JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+    }
+
+    /**
      * Returns single object data.
      * $item will be mapped based on BaseMapper child class.
      *
