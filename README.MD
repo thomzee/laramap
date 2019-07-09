@@ -1,4 +1,8 @@
 [![SymfonyInsight](https://insight.symfony.com/projects/4ee81aed-6807-441f-8c42-9b71053e31bd/mini.svg)](https://insight.symfony.com/projects/4ee81aed-6807-441f-8c42-9b71053e31bd)
+[![Latest Stable Version](https://poser.pugx.org/thomzee/laramap/version)](https://packagist.org/packages/thomzee/laramap)
+[![Total Downloads](https://poser.pugx.org/thomzee/laramap/downloads)](https://packagist.org/packages/thomzee/laramap)
+[![Latest Unstable Version](https://poser.pugx.org/thomzee/laramap/v/unstable)](//packagist.org/packages/thomzee/laramap)
+[![License](https://poser.pugx.org/thomzee/laramap/license)](https://packagist.org/packages/thomzee/laramap)
 # Laramap
 
 ## Introduction
