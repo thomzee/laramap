@@ -1,3 +1,4 @@
+[![SymfonyInsight](https://insight.symfony.com/projects/4ee81aed-6807-441f-8c42-9b71053e31bd/mini.svg)](https://insight.symfony.com/projects/4ee81aed-6807-441f-8c42-9b71053e31bd)
 # Laramap
 
 ## Introduction
