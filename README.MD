@@ -1,66 +1,85 @@
 # Laramap
 
-## Docs
-Laravel Mapper For Object Eloquent (Laravel)
+## Introduction
+Laramap is a Laravel package for object or array mapping in order to give a mature REST API response easier and cleaner.
 
-## Installs
-
-### For Laravel Version 5.4 and/or NEWER
-a. go into your project root folder laravel 
+## Installation
+You can choose one of those two installation methods freely.
+#### 1. Automatic Installation
+Go into your project root folder laravel 
 ```$xslt
     cd YOUR_LARAVEL_ROOT_PROJECT/
 ``` 
-b. and type this
+then get the latest version of Laramap on your project with following command.
 ```$xslt
     composer require thomzee/laramap
 ```
-### For Laravel Version 5.3 and/or OLDER
-a. go into your project root folder laravel 
+#### 2. Manual Installation
+Alternatively, you can update your composer.json file, just like code below
 ```$xslt
-    cd YOUR_LARAVEL_ROOT_PROJECT/
-``` 
-b. and type this
-```$xslt
-    composer require thomzee/laramap
+    "require": {
+        . . .
+        "thomzee/laramap": "dev-master"
+    },
 ```
-c. and add to your ```config/app.php ``` , this line 
+b. then run `composer install` command.
+## Register Service
+Firstly you need register the service provider your project configuration file `config/app.php` 
 ```$xslt
-    Thomzee\Laramap\Response::class,
+    'providers' => [
+        . . .
+        Thomzee\Laramap\LaramapServiceProvider::class,
+    ]
 ```
-
-## How To Use
-1 . Firstly you need to dumpautoload 
+and the facade as well in same file.
 ```$xslt
-    composer dumpautoload
+    'aliases' => [
+        . . .
+        'Laramap' => Thomzee\Laramap\Facades\Laramap::class,
+    ]
 ```
-2 . and list artisan command, make sure ```php artisan make:mapper ``` is exist, and list artisan command with 
+Run `composer dump-autoload` command to update changes in your project configuration file.
+```$xslt
+    composer dump-autoload
+```
+## Mapper Class Generator
+Make sure ```php artisan make:mapper ``` is exist, and list artisan command with 
 ```$xslt
     php artisan list
 ```
 
-3 . create mapper first for the object models Laravel, example:
+then generate a mapper file with artisan command, example:
 ```$xslt
     php artisan make:mapper UserMapper
 ```
-4 . and on the controller using class **Response** 
-
-5 . and add your new route to ```routes/api.php```
-
-## Feature
-##### 1. Paginate Data
-Get List Object From Eloquent Collection with this example code
+Update the content of single() method. The array keys is attributes of the response and $item is a representation of single object or array, example:
 ```$xslt
-/**
-     * Display a listing of the resource.
-     *
-     * @return JsonResponse
-     */
-    public function index()
+    function single($item)
     {
-        return \Thomzee\Laramap\Response::paged(\App\Mappers\UserMapper::class, \App\User::paginate(10));
+        return [
+            "name" => $item->name,
+            "email" => $item->email,
+            "join_date" => $item->created_at,
+        ];
     }
 ```
-the code above, with class **Response** From Laramap Package and using Mapper the one we create earlier which is ```UserMapper``` class, and the result is like this
+## Features
+Import the package in above of your controller class.
+```$xslt
+    use Laramap;
+```
+That's it. That is because you has registered the package in your project configuration file.
+##### 1. Paginated Data
+Get list of paginated data with pages information.
+First parameter must be Mapper class you generated before and the second must be instance of `Illuminate\Contracts\Pagination\Paginator`.
+You can do where clause and other query builder functions before finally you call the paginate() function here.
+```$xslt
+    public function index()
+    {
+        return Laramap::paged(\App\Mappers\UserMapper::class, \App\User::paginate(10));
+    }
+```
+the code above, using Mapper the one we create earlier which is ```UserMapper``` class, and the result is like this
 ```$xslt
 {
     "meta": {
@@ -96,17 +115,11 @@ the code above, with class **Response** From Laramap Package and using Mapper th
 ```
 
 #### 2. Single Data 
-Get Single Object From Eloquent Collection with this example code
+Get single object or array. You can even fill it with a Laravel collection
 ```$xslt
-/**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return JsonResponse
-     */
     public function show($id)
     {
-        return \Thomzee\Laramap\Response::single(\App\Mappers\UserMapper::class, \App\User::find($id));
+        return Laramap::single(\App\Mappers\UserMapper::class, \App\User::find($id));
     }
 ```
 and the result is like this
@@ -124,16 +137,11 @@ and the result is like this
 ```
 
 #### 3. List Data
-Get List Data (Array Data) without paginate the items, with this example code
+Get list data (array data) without paginate the items, with this example code
 ```$xslt
-/**
-     * Display a listing of the resource.
-     *
-     * @return JsonResponse
-     */
     public function all()
     {
-        return \Thomzee\Laramap\Response::list(\App\Mappers\UserMapper::class, \App\User::paginate(10));
+        return Laramap::list(\App\Mappers\UserMapper::class, \App\User::paginate(10));
     }
 ```
 and the result is something like this. 
@@ -159,17 +167,47 @@ and the result is something like this.
 ```
 
 #### 4. Success Response
-set Response with Success meta, with no parameters.
+Response success meta, with no parameters.
 ```$xslt
-/**
-     * Display a listing of the resource.
-     *
-     * @return JsonResponse
-     */
     public function all()
     {
-        return \Thomzee\Laramap\Response::success();
+        return Laramap::success();
+    }
+```
+#### 4. Error Response
+or and error meta.
+```$xslt
+    public function all()
+    {
+        return Laramap::error();
     }
 ```
 #### 5. Response For Validation
-set Response to Fail Validation
+Response Laravel Validation errors bag
+```$xslt
+    $validator = Validator::make($request->all(), [
+        'foo' => 'required',
+        'bar' => 'required'
+    ]);
+    if ($validator->fails()) {
+        return Laramap::validation($validator);
+    }
+```
+the result is
+```$xslt
+    {
+        "meta": {
+            "code": 422,
+            "status": "validation_error",
+            "message": "Oops, something went wrong.",
+            "errors": {
+                "foo": [
+                    "The foo field is required."
+                ],
+                "bar": [
+                    "The bar field is required."
+                ]
+            }
+        }
+    }
+```
