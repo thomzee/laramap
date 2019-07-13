@@ -86,37 +86,37 @@ You can do where clause and other query builder functions before finally you cal
 ```
 the code above, using Mapper the one we create earlier which is ```UserMapper``` class, and the result is like this
 ```$xslt
-{
-    "meta": {
-        "code": 200,
-        "status": "success",
-        "message": "Operation successfully executed."
-    },
-    "pages": {
-        "per_page": 10,
-        "current_page": 1,
-        "last_page": 1,
-        "has_more_pages": false,
-        "from": 1,
-        "to": 3
-    },
-    "links": {
-        "self": 10,
-        "next": null,
-        "prev": null
-    },
-    "data": [
-        {
-            "name": Alex
+    {
+        "meta": {
+            "code": 200,
+            "status": "success",
+            "message": "Operation successfully executed."
         },
-        {
-            "name": Thomas
+        "pages": {
+            "per_page": 10,
+            "current_page": 1,
+            "last_page": 1,
+            "has_more_pages": false,
+            "from": 1,
+            "to": 3
         },
-        {
-            "name": Uje
-        }
-    ]
-}
+        "links": {
+            "self": 10,
+            "next": null,
+            "prev": null
+        },
+        "data": [
+            {
+                "name": Alex
+            },
+            {
+                "name": Thomas
+            },
+            {
+                "name": Uje
+            }
+        ]
+    }
 ```
 
 #### 2. Single Data 
@@ -129,16 +129,16 @@ Get single object or array. You can even fill it with a Laravel collection
 ```
 and the result is like this
 ```$xslt
-{
-    "meta": {
-        "code": 200,
-        "status": "success",
-        "message": "Operation successfully executed."
-    },
-    "data": {
-        "name": Thomas
+    {
+        "meta": {
+            "code": 200,
+            "status": "success",
+            "message": "Operation successfully executed."
+        },
+        "data": {
+            "name": Thomas
+        }
     }
-}
 ```
 
 #### 3. List Data
@@ -151,24 +151,24 @@ Get list data (array data) without paginate the items, with this example code
 ```
 and the result is something like this. 
 ```$xslt
-{
-    "meta": {
-        "code": 200,
-        "status": "success",
-        "message": "Operation successfully executed."
-    },
-    "data": [
-        {
-            "name": Alex
+    {
+        "meta": {
+            "code": 200,
+            "status": "success",
+            "message": "Operation successfully executed."
         },
-        {
-            "name": Thomas
-        },
-        {
-            "name": Uje
-        }
-    ]
-}
+        "data": [
+            {
+                "name": Alex
+            },
+            {
+                "name": Thomas
+            },
+            {
+                "name": Uje
+            }
+        ]
+    }
 ```
 
 #### 4. Success Response
