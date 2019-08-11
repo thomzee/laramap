@@ -117,7 +117,7 @@ class MapperService
                 'to' => $paged->lastItem()
             ],
             'links' => [
-                'self' => $paged->perPage(),
+                'self' => url()->full(),
                 'next' => $paged->nextPageUrl(),
                 'prev' => $paged->previousPageUrl(),
             ],
