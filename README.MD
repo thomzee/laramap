@@ -6,6 +6,7 @@
 # Laramap
 
 ## Introduction
+Every laravel API projects need a map to avoid get lost in the response jungle.
 Laramap is a Laravel package for object or array mapping in order to give a mature REST API response easier and cleaner.
 
 ## Installation
@@ -45,7 +46,7 @@ and the facade as well in same file.
 ```
 Run `composer dump-autoload` command to update changes in your project configuration file.
 ```$xslt
-    composer dump-autoload
+composer dump-autoload
 ```
 ## Mapper Class Generator
 Make sure ```php artisan make:mapper``` is exist, and list artisan command with 
@@ -71,7 +72,7 @@ function single($item)
 ## Features
 Import the package in above of your controller class.
 ```$xslt
-    use Laramap;
+use Laramap;
 ```
 That's it. That is because you has registered the package in your project configuration file.
 #### 1. Paginated Data
