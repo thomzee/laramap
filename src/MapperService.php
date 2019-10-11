@@ -143,4 +143,28 @@ class MapperService
 
         return response()->json($response, JsonResponse::HTTP_OK);
     }
+
+    /**
+     * Custom response data.
+     *
+     * @param int $code
+     * @param string $message
+     * @param string $status
+     * @param array|object $data
+     * @param array $errors
+     * @return JsonResponse
+     */
+    public static function custom($code, $message, $status, $data = [], $errors = [])
+    {
+        $response = [
+            'meta' => [
+                'code' => $code,
+                'status' => $status,
+                'message' => $message,
+                'errors' => $errors
+            ],
+            'data' => $data
+        ];
+        return response()->json($response, $code);
+    }
 }
