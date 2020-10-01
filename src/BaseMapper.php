@@ -15,7 +15,7 @@ abstract class BaseMapper
      * @param $items
      * @return array
      */
-    public function list($items) {
+    public function index($items) {
         $result = [];
         foreach($items as $item) {
             $result[] = $this->single($item);
