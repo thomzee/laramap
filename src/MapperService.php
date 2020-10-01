@@ -7,6 +7,7 @@ namespace Thomzee\Laramap;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\JsonResponse;
+use \Illuminate\Support\Facades\Response;
 
 /**
  * Contains main functions of Laramap.
@@ -28,7 +29,7 @@ class MapperService
             'meta' => BaseMeta::success()
         ];
 
-        return response()->json($response, JsonResponse::HTTP_OK);
+        return Response::json($response, JsonResponse::HTTP_OK);
     }
 
     /**
@@ -42,7 +43,7 @@ class MapperService
             'meta' => BaseMeta::error()
         ];
 
-        return response()->json($response, JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+        return Response::json($response, JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     /**
@@ -53,11 +54,11 @@ class MapperService
      * @param array|object $item
      * @return JsonResponse
      */
-    public static function single(string $mapper, $item)
+    public static function single($mapper, $item)
     {
         $mapper = new $mapper();
         if (!$mapper instanceof BaseMapper) {
-            return response()->json(BaseMeta::error(), JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            return Response::json(BaseMeta::error(), JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         $response = [
@@ -65,7 +66,7 @@ class MapperService
             'data' => $mapper->single($item)
         ];
 
-        return response()->json($response, JsonResponse::HTTP_OK);
+        return Response::json($response, JsonResponse::HTTP_OK);
     }
 
     /**
@@ -76,11 +77,11 @@ class MapperService
      * @param $items
      * @return JsonResponse
      */
-    public static function list(string $mapper, $items)
+    public static function index($mapper, $items)
     {
         $mapper = new $mapper();
         if (!$mapper instanceof BaseMapper) {
-            return response()->json(BaseMeta::error(), JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            return Response::json(BaseMeta::error(), JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         $response = [
@@ -88,7 +89,7 @@ class MapperService
             'data' => $mapper->list($items)
         ];
 
-        return response()->json($response, JsonResponse::HTTP_OK);
+        return Response::json($response, JsonResponse::HTTP_OK);
     }
 
     /**
@@ -99,11 +100,11 @@ class MapperService
      * @param Paginator $paged
      * @return JsonResponse
      */
-    public static function paged(string $mapper, Paginator $paged)
+    public static function paged($mapper, Paginator $paged)
     {
         $mapper = new $mapper();
         if (!$mapper instanceof BaseMapper) {
-            return response()->json(BaseMeta::error(), JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            return Response::json(BaseMeta::error(), JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         $response = [
@@ -124,7 +125,7 @@ class MapperService
             'data' => $mapper->list($paged->items())
         ];
 
-        return response()->json($response, JsonResponse::HTTP_OK);
+        return Response::json($response, JsonResponse::HTTP_OK);
     }
 
     /**
@@ -141,7 +142,7 @@ class MapperService
             'meta' => BaseMeta::validation($validator, $merged)
         ];
 
-        return response()->json($response, JsonResponse::HTTP_OK);
+        return Response::json($response, JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     /**
@@ -165,6 +166,6 @@ class MapperService
             ],
             'data' => $data
         ];
-        return response()->json($response, $code);
+        return Response::json($response, $code);
     }
 }
