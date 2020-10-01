@@ -15,7 +15,8 @@
         "illuminate/support": "5.x|6.x|7.x|8.x",
         "illuminate/contracts": "5.x|6.x|7.x|8.x",
         "illuminate/http": "5.x|6.x|7.x|8.x",
-        "illuminate/database": "5.x|6.x|7.x|8.x"
+        "illuminate/database": "5.x|6.x|7.x|8.x",
+        "illuminate/console": "5.x|6.x|7.x|8.x"
     },
     "autoload": {
         "psr-4": {
