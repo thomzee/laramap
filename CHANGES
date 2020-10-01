@@ -1,0 +1,29 @@
+Version 1.2.0:
+
+
+Version 1.1.0:
+ - add bumpversion for versioning
+
+Version 0.1.0
+ - change url self to url()->full()
+ - update README
+ - update README
+ - fix typos on README
+ - add license section to README
+ - update README file
+ - rename Response class to MapperService
+ - add error() function to service
+ - update PHPDOC
+ - standarize code style
+ - Merge branch 'master' of github.com:thomzee/laramap
+ - add app facade
+ - add licence
+ - Merge pull request #2 from huzairuje/add-readme
+ - typo on readme v2
+ - typo on readme
+ - Merge pull request #1 from huzairuje/add-readme
+ - add readme
+ - change stubs dir from packages to vendor
+ - update composer.json
+ - Initial commit
+
